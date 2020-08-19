@@ -813,7 +813,7 @@ NAN_METHOD(Database::Import)
     {
         Local<Value> noHeaderValue =
             options->Get(context, String::NewFromUtf8(isolate, "noHeaderRow", NewStringType::kNormal).ToLocalChecked()).ToLocalChecked();
-        noHeaderRow = noHeaderValue->BooleanValue(isolate);
+        noHeaderRow = noHeaderValue->BooleanValue(context).FromJust();
     }
 
     ImportOptions importOptions(colIds, delimChar, noHeaderRow);
